@@ -1,8 +1,7 @@
 {
  "actions": [],
- "allow_rename": 0,
  "autoname": "naming_series:",
- "creation": "2025-08-05 10:00:00.000000",
+ "creation": "2025-08-05 10:00:00",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -76,6 +75,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Motorcycle",
    "fieldname": "vehicle_type",
    "fieldtype": "Select",
    "label": "Vehicle Type",
@@ -83,6 +83,7 @@
    "reqd": 1
   },
   {
+   "default": "Petrol",
    "fieldname": "fuel_type",
    "fieldtype": "Select",
    "label": "Fuel Type",
@@ -112,12 +113,14 @@
    "fieldname": "current_driver",
    "fieldtype": "Link",
    "label": "Current Driver",
-   "options": "Driver"
+   "link_filters": "[[\"Employee\",\"custom_type\",\"=\",\"Driver\"]]",
+   "options": "Employee"
   },
   {
    "fieldname": "assigned_date",
    "fieldtype": "Date",
-   "label": "Assigned Date"
+   "label": "Assigned Date",
+   "options": "Todoy"
   },
   {
    "fieldname": "column_break_15",
@@ -135,7 +138,7 @@
    "fieldname": "odometer_reading",
    "fieldtype": "Float",
    "label": "Current Odometer Reading (km)",
-   "precision": 2
+   "precision": "2"
   },
   {
    "fieldname": "section_break_18",
@@ -155,7 +158,7 @@
  ],
  "image_field": "vehicle_image",
  "links": [],
- "modified": "2025-08-05 10:00:00.000000",
+ "modified": "2025-08-05 23:19:48.997433",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Vehicle",
@@ -196,6 +199,7 @@
    "share": 1
   }
  ],
+ "row_format": "Dynamic",
  "search_fields": "license_plate,make,model,current_driver",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
