@@ -5,6 +5,15 @@ app_description = "Fleet Management App"
 app_email = "aalshehri08@hotmail.com"
 app_license = "mit"
 
+# Fixtures
+# ------------------
+fixtures = [
+    {
+        "doctype": "Role",
+        "filters": [["role_name", "in", ["Fleet Manager", "Driver"]]]
+    }
+]
+
 # Apps
 # ------------------
 
