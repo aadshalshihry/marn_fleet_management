@@ -1,8 +1,7 @@
 {
  "actions": [],
- "allow_rename": 0,
  "autoname": "naming_series:",
- "creation": "2025-08-05 10:00:00.000000",
+ "creation": "2025-08-05 10:00:00",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -50,7 +49,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Driver",
-   "options": "Driver",
+   "link_filters": "[[\"Employee\",\"custom_type\",\"=\",\"Driver\"]]",
+   "options": "Employee",
    "reqd": 1
   },
   {
@@ -81,7 +81,7 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Odometer Reading (km)",
-   "precision": 2,
+   "precision": "2",
    "reqd": 1
   },
   {
@@ -96,7 +96,7 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Quantity (Liters)",
-   "precision": 2,
+   "precision": "2",
    "reqd": 1
   },
   {
@@ -135,18 +135,18 @@
    "fieldname": "fuel_efficiency",
    "fieldtype": "Float",
    "label": "Fuel Efficiency (km/l)",
-   "precision": 2,
+   "precision": "2",
    "read_only": 1
   },
   {
    "fieldname": "distance_covered",
    "fieldtype": "Float",
    "label": "Distance Covered (km)",
-   "precision": 2,
+   "precision": "2",
    "read_only": 1
   },
   {
-   "default": 0,
+   "default": "0",
    "fieldname": "tank_full",
    "fieldtype": "Check",
    "label": "Tank Full"
@@ -158,7 +158,7 @@
   }
  ],
  "links": [],
- "modified": "2025-08-05 10:00:00.000000",
+ "modified": "2025-08-05 23:50:11.907574",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Fuel Log",
@@ -201,6 +201,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "search_fields": "vehicle,driver,fuel_date",
  "sort_field": "modified",
  "sort_order": "DESC",

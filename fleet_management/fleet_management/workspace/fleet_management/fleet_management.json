@@ -30,7 +30,7 @@
    "is_query_report": 0,
    "label": "Driver",
    "link_count": 0,
-   "link_to": "Driver",
+   "link_to": "Employee",
    "link_type": "DocType",
    "onboard": 1,
    "type": "Link"
@@ -69,7 +69,7 @@
    "type": "Link"
   }
  ],
- "modified": "2025-08-05 23:04:03.199436",
+ "modified": "2025-08-05 23:31:05.416231",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Fleet Management",
@@ -93,8 +93,8 @@
    "color": "Green",
    "doc_view": "List",
    "label": "Driver",
-   "link_to": "Driver",
-   "stats_filter": "{\"status\": \"Active\"}",
+   "link_to": "Employee",
+   "stats_filter": "{\"custom_type\": \"Driver\"}",
    "type": "DocType"
   },
   {

@@ -3,6 +3,8 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import getdate, nowdate
+from datetime import datetime
 
 
 class Vehicle(Document):
@@ -12,9 +14,10 @@ class Vehicle(Document):
 		if self.license_plate:
 			self.license_plate = self.license_plate.upper()
 
-		# Validate year
-		if self.year and (self.year < 1900 or self.year > frappe.utils.nowdate().year + 1):
-			frappe.throw(f"Invalid year: {self.year}")
+		# Validate year - using proper method to get current year
+		current_year = getdate(nowdate()).year
+		if self.year and (self.year < 1900 or self.year > current_year + 1):
+			frappe.throw(f"Invalid year: {self.year}. Year must be between 1900 and {current_year + 1}.")
 
 	def on_update(self):
 		"""Update related records when vehicle is updated"""
