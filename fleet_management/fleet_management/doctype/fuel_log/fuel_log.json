@@ -49,7 +49,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Driver",
-   "link_filters": "[[\"Employee\",\"custom_type\",\"=\",\"Driver\"]]",
+   "link_filters": "[[\"Employee\",\"custom_job_type\",\"in\",[\"Bike Driver\",\"Car Driver\",null]]]",
    "options": "Employee",
    "reqd": 1
   },
@@ -78,7 +78,7 @@
   },
   {
    "fieldname": "odometer_reading",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Odometer Reading (km)",
    "precision": "2",
@@ -158,7 +158,7 @@
   }
  ],
  "links": [],
- "modified": "2025-08-05 23:50:11.907574",
+ "modified": "2025-10-01 07:24:09.303443",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Fuel Log",

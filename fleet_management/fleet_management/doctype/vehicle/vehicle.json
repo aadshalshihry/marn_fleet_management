@@ -136,7 +136,7 @@
   },
   {
    "fieldname": "odometer_reading",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Current Odometer Reading (km)",
    "precision": "2"
   },
@@ -158,7 +158,7 @@
  ],
  "image_field": "vehicle_image",
  "links": [],
- "modified": "2025-09-02 23:09:08.937319",
+ "modified": "2025-10-01 07:13:31.939341",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Vehicle",

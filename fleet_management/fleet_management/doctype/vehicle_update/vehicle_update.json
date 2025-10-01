@@ -50,7 +50,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Driver",
-   "link_filters": "[[\"Employee\",\"custom_type\",\"=\",\"Driver\"]]",
+   "link_filters": "[[\"Employee\",\"custom_job_type\",\"in\",[\"Bike Driver\",\"Car Driver\"]]]",
    "options": "Employee",
    "reqd": 1
   },
@@ -82,7 +82,7 @@
    "reqd": 1
   },
   {
-   "default": "Submitted",
+   "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -96,7 +96,7 @@
   },
   {
    "fieldname": "odometer_reading",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Odometer Reading (km)",
    "precision": "2"
   },
@@ -162,7 +162,7 @@
   }
  ],
  "links": [],
- "modified": "2025-08-05 23:20:35.130859",
+ "modified": "2025-10-01 07:21:39.079291",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Vehicle Update",
