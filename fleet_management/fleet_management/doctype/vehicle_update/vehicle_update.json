@@ -21,6 +21,8 @@
   "description",
   "column_break_12",
   "notes",
+  "stock_section",
+  "maintenance_items",
   "section_break_14",
   "photos",
   "videos",
@@ -46,12 +48,12 @@
    "reqd": 1
   },
   {
+   "fetch_from": "vehicle.current_driver_name",
    "fieldname": "driver",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Data",
    "label": "Driver",
    "link_filters": "[[\"Employee\",\"custom_job_type\",\"in\",[\"Bike Driver\",\"Car Driver\"]]]",
-   "options": "Employee",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -78,7 +80,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Update Type",
-   "options": "Daily Check\nPre-Trip Inspection\nPost-Trip Inspection\nIncident Report\nMaintenance Alert\nFuel Update\nOther",
+   "options": "Daily Check\nPre-Trip Inspection\nPost-Trip Inspection\nIncident Report\nMaintenance Alert\nMaintenance\nFuel Update\nOther",
    "reqd": 1
   },
   {
@@ -159,10 +161,22 @@
    "fieldname": "maintenance_required",
    "fieldtype": "Check",
    "label": "Maintenance Required"
+  },
+  {
+   "fieldname": "stock_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Stock"
+  },
+  {
+   "fieldname": "maintenance_items",
+   "fieldtype": "Table",
+   "label": "Maintenance Items",
+   "options": "Vehicle Maintenance Item"
   }
  ],
  "links": [],
- "modified": "2025-10-01 07:21:39.079291",
+ "modified": "2025-10-06 06:58:52.943978",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Vehicle Update",

@@ -31,6 +31,10 @@ class VehicleUpdate(Document):
 		# Update vehicle status if issues reported
 		if self.issues_reported:
 			self.update_vehicle_status()
+		
+		"""Create stock entry when vehicle update is submitted"""
+		if self.maintenance_items:
+			self.create_stock_entry()
 
 	def create_maintenance_request(self):
 		"""Create maintenance request if maintenance is required"""
@@ -54,3 +58,48 @@ class VehicleUpdate(Document):
 			# Don't automatically change status, but notify fleet manager
 			frappe.msgprint(f"Issues reported for vehicle {self.vehicle}. Please review and update status if needed.",
 				alert=True)
+
+	def create_stock_entry(self):
+		"""Create Material Issue stock entry for maintenance items"""
+		stock_entry = frappe.get_doc({
+				"doctype": "Stock Entry",
+				"stock_entry_type": "Material Issue",
+				"purpose": "Material Issue",
+				"company": self.company,
+				"posting_date": self.date,
+				"vehicle_update": self.name,  # Reference back
+				"items": []
+		})
+		
+		for item in self.maintenance_items:
+			stock_entry.append("items", {
+					"item_code": item.item_code,
+					"qty": item.qty,
+					"uom": item.uom,
+					"s_warehouse": item.warehouse,  # Source warehouse
+					"cost_center": self.cost_center if hasattr(self, 'cost_center') else None,
+					"expense_account": self.get_expense_account(item.item_code)
+			})
+		
+		stock_entry.insert()
+		stock_entry.submit()
+		
+		frappe.msgprint(f"Stock Entry {stock_entry.name} created successfully")
+		
+		# Link stock entry to vehicle update
+		self.db_set("stock_entry", stock_entry.name)
+
+		def get_expense_account(self, item_code):
+			"""Get expense account for the item"""
+			item = frappe.get_doc("Item", item_code)
+			return item.expense_account or frappe.get_cached_value(
+					"Company", self.company, "default_expense_account"
+			)
+
+		def on_cancel(self):
+			"""Cancel linked stock entry when vehicle update is cancelled"""
+			if self.stock_entry:
+				stock_entry = frappe.get_doc("Stock Entry", self.stock_entry)
+				if stock_entry.docstatus == 1:
+					stock_entry.cancel()
+					frappe.msgprint(f"Stock Entry {self.stock_entry} cancelled")

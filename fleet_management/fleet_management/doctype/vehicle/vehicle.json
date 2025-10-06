@@ -16,11 +16,13 @@
   "column_break_6",
   "vehicle_type",
   "fuel_type",
+  "arabic_license_plate",
   "engine_number",
   "chassis_number",
   "color",
   "section_break_12",
   "current_driver",
+  "current_driver_name",
   "assigned_date",
   "column_break_15",
   "status",
@@ -154,11 +156,24 @@
    "fieldname": "notes",
    "fieldtype": "Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "arabic_license_plate",
+   "fieldtype": "Data",
+   "label": "Arabic License Plate",
+   "unique": 1
+  },
+  {
+   "fetch_from": "current_driver.employee_name",
+   "fieldname": "current_driver_name",
+   "fieldtype": "Data",
+   "label": "Current Driver Name",
+   "read_only": 1
   }
  ],
  "image_field": "vehicle_image",
  "links": [],
- "modified": "2025-10-01 07:13:31.939341",
+ "modified": "2025-10-06 06:56:22.984388",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Vehicle",
